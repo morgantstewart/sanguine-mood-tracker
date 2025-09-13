@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
+      path('moods/', views.moods_index, name='moods-index'),
+
 ]

@@ -6,8 +6,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="" />
-    <title>Sanguine</title>
+
+    <link
+    rel="shortcut icon"
+    type="image/png"
+    href="{% static 'css/images/sanguinetanlogo.svg' %}"
+  />    <title>Sanguine</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     {% block head %} 
     {% endblock %}
@@ -16,12 +20,14 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="{% static 'css/images/sanguinelarge.png' %}" alt="Sanguine Logo" />
+          <img src="{% static 'css/images/sanguinetanlogo.svg' %}" alt="Sanguine Logo" />
         </a>
       </div>
       <nav>
         <ul>
           <li><a href="/about">About</a></li>
+          <li><a href="/moods/">Index/All</a></li>
+
           <!-- <li><img src="{% static 'css/images/sanguinelarge.png' %}" alt="Sanguine Logo" /></li> -->
         </ul>
       </nav>
