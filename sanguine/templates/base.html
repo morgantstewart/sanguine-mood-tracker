@@ -1,3 +1,5 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="" />
     <title>Sanguine</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     {% block head %} 
     {% endblock %}
   </head>
@@ -13,12 +16,13 @@
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="" alt="Sanguine Logo" />
+          <img src="{% static 'css/images/sanguinelarge.png' %}" alt="Sanguine Logo" />
         </a>
       </div>
       <nav>
         <ul>
           <li><a href="/about">About</a></li>
+          <!-- <li><img src="{% static 'css/images/sanguinelarge.png' %}" alt="Sanguine Logo" /></li> -->
         </ul>
       </nav>
     </header>

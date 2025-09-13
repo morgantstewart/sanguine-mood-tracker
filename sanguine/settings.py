@@ -55,7 +55,7 @@ ROOT_URLCONF = 'sanguine.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'sanguine' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
