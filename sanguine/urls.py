@@ -24,4 +24,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('moods/', views.moods_index, name='moods-index'),
     path('moods/<int:mood_id>/', views.mood_detail, name='mood-detail'),
+    path('moods/create/', views.MoodCreate.as_view(), name='mood-create'),
+
 ]

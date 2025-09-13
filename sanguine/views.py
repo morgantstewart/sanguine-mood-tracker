@@ -1,10 +1,12 @@
 # main_app/views.py
 
 from django.shortcuts import render
-
-# Import HttpResponse to send text-based responses
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 from django.http import HttpResponse
 from .models import Mood
+
+
 
 
 # Define the home view function
@@ -52,4 +54,12 @@ def mood_detail(request, mood_id):
         # If mood doesn't exist in database, create a fallback
         mood = moods_data[mood_id - 1] if mood_id <= len(moods_data) else None
     return render(request, 'moods/detail.html', {'mood': mood})
+
+# main-app/views.py
+
+class MoodCreate(CreateView):
+    model = Mood
+    fields = '__all__'
+    template_name = 'sanguine/mood_form.html'
+    success_url = '/moods/'
 
