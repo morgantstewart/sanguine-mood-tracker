@@ -45,4 +45,11 @@ def moods_index(request):
         moods = moods_data
     return render(request, 'moods/index.html', {'moods': moods})
 
+def mood_detail(request, mood_id):
+    try:
+        mood = Mood.objects.get(id=mood_id)
+    except Mood.DoesNotExist:
+        # If mood doesn't exist in database, create a fallback
+        mood = moods_data[mood_id - 1] if mood_id <= len(moods_data) else None
+    return render(request, 'moods/detail.html', {'mood': mood})
 

@@ -7,53 +7,60 @@
 </section>
 <section class="card-container">
     <div class="card">
-        <div class="card-content">
+        <a href="{% url 'mood-detail' mood.id %}">
+            <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/depressed1.png' %}" alt="Depressed Mood" />
             </div>
         </div>
-    </div>
+    </div></a>              
     <div class="card">
+        <a href="{% url 'mood-detail' mood.id %}">
         <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/sad1.png' %}" alt="Sad Mood" />
             </div>
         </div>
-    </div>
+    </div></a>  
     <div class="card">
+        <a href="{% url 'mood-detail' mood.id %}">
         <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/okay1.png' %}" alt="Okay Mood" />
             </div>
         </div>
-    </div>
+    </div></a>  
     <div class="card">
+        <a href="{% url 'mood-detail' mood.id %}">
         <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/good1.png' %}" alt="Good Mood" />
             </div>
         </div>
-    </div>
+    </div></a>  
     <div class="card">
+        <a href="{% url 'mood-detail' mood.id %}">
         <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/happy1.png' %}" alt="Happy Mood" />
             </div>
         </div>
-    </div>
+    </div></a>  
     <div class="card">
+        <a href="/moods/{{ mood.id }}"></a>
         <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/mad1.png' %}" alt="Mad Mood" />
             </div>
         </div>
-    </div>
+    </div></a>
     <div class="card">
+        <a href="/moods/{{ mood.id }}">
         <div class="card-content">
             <div class="card-img-container">
                 <img src="{% static 'css/images/irritated1.png' %}" alt="Irritated Mood" />
             </div>
-        </div>
+        </div></a>
     </div>
 </section>
 {% endblock %}
