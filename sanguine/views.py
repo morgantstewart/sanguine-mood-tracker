@@ -2,7 +2,7 @@
 
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Mood
 
@@ -63,3 +63,12 @@ class MoodCreate(CreateView):
     template_name = 'sanguine/mood_form.html'
     success_url = '/moods/'
 
+
+class MoodUpdate(UpdateView):
+    model = Mood
+    # Let's disallow the renaming of a cat by excluding the name field!
+    fields = ['breed', 'description', 'age']
+
+class MoodDelete(DeleteView):
+    model = Mood
+    success_url = '/moods/'

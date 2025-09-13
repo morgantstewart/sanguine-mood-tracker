@@ -16,6 +16,12 @@
       <h2>A {{ mood.breed }} kitten.</h2>
     {% endif %}
     <p>{{ mood.description }}</p>
+
+    <div class="mood-actions">
+        <a href="{% url 'mood-update' mood.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'mood-delete' mood.id %}" class="btn danger">Delete</a>
+      </div>
+
   </div>
 </section>
 {% endblock %}

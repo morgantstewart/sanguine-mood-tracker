@@ -6,6 +6,15 @@
 {% block content %}
 
 <div class="page-header">
+    <div class="page-header">
+        <!-- Check if a cat object exists to determine if we're editing -->
+        {% if mood %}
+          <h1>Edit {{ mood.name }}</h1>
+        {% else %}
+          <h1>Add a Mood</h1>
+        {% endif %}
+      </div>
+
   <h1>Add a Mood</h1>
   <img src="{% static 'images/' %}" alt="A mood" />
 </div>
