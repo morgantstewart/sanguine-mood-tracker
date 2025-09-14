@@ -1,6 +1,6 @@
 # main_app/views.py
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
@@ -9,6 +9,7 @@ from django.contrib.auth.views import LoginView
 
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -38,17 +39,11 @@ moods_data = [
 ]
 
 # views.py
-
+@login_required
 def moods_index(request):
-    try:
-        moods = Mood.objects.all()  # Get moods from database
-        # If no moods in database, use fallback data
-        if not moods.exists():
-            moods = moods_data
-    except Exception:
-        # If there's any database error, use fallback data
-        moods = moods_data
-    return render(request, 'moods/index.html', {'moods': moods})
+    moods = Mood.objects.filter(user=request.user)
+    return render(request, 'moods/index.html', { 'moods': moods })
+
 
 def mood_detail(request, mood_id):
     try:
@@ -60,26 +55,26 @@ def mood_detail(request, mood_id):
 
 # main-app/views.py
 
-class MoodCreate(CreateView):
+class MoodCreate(LoginRequiredMixin, CreateView):
     model = Mood
     fields = '__all__'
     template_name = 'sanguine/mood_form.html'
     success_url = '/moods/'
 
 
-class MoodUpdate(UpdateView):
+class MoodUpdate(LoginRequiredMixin, UpdateView):
     model = Mood
     # Let's disallow the renaming of a cat by excluding the name field!
     fields = ['breed', 'description', 'age']
 
-class MoodDelete(DeleteView):
+class MoodDelete(LoginRequiredMixin, DeleteView):
     model = Mood
     success_url = '/moods/'
 
 class Home(LoginView):
     template_name = 'home.html'
 
-class MoodCreate(CreateView):
+class MoodCreate(LoginRequiredMixin, CreateView):
     model = Mood
     fields = ['name', 'breed', 'description', 'age']
 
@@ -95,7 +90,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('cat-index')
+            return redirect('moods-index')
         else:
             error_message = 'Invalid sign up - try again'
     form = UserCreationForm()

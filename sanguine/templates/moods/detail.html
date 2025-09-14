@@ -1,6 +1,25 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block head %}
+
+{% block head %}
+<!-- New MCDatepicker CSS -->
+<link 
+  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
+  rel="stylesheet" 
+/>
+<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
+<!-- MCDatepicker JS -->
+<script 
+  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
+>
+</script>
+<!-- Existing CSS -->
+<link rel="stylesheet" href="{% static 'css/moods/mood-detail.css' %}" />
+{% endblock %}
+
+
+
 <link rel="stylesheet" href="{% static 'css/moods/mood-detail.css' %}" />
 {% endblock %} 
 {% block content %}

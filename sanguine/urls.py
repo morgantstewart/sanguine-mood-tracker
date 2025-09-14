@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth.mixins import LoginRequiredMixin
 from . import views
 
 urlpatterns = [
@@ -25,8 +26,8 @@ urlpatterns = [
     path('moods/', views.moods_index, name='moods-index'),
     path('moods/<int:mood_id>/', views.mood_detail, name='mood-detail'),
     path('moods/create/', views.MoodCreate.as_view(), name='mood-create'),
+    path('register/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/signup/', views.signup, name='signup'),
 
 
 ]
