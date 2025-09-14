@@ -5,6 +5,7 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponse
 from .models import Mood
+from django.contrib.auth.views import LoginView
 
 
 
@@ -72,3 +73,6 @@ class MoodUpdate(UpdateView):
 class MoodDelete(DeleteView):
     model = Mood
     success_url = '/moods/'
+
+class Home(LoginView):
+    template_name = 'home.html'

@@ -19,11 +19,12 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.Home.as_view(), name='home'),
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
     path('moods/', views.moods_index, name='moods-index'),
     path('moods/<int:mood_id>/', views.mood_detail, name='mood-detail'),
     path('moods/create/', views.MoodCreate.as_view(), name='mood-create'),
+    path('accounts/', include('django.contrib.auth.urls')),
 
 ]
