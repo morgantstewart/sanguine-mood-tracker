@@ -5,6 +5,7 @@
 <p class="page-content">
 Welcome to Sanguine.
 </p>
+{% if not user.is_authenticated %}
 
 <section>
     <form action="{% url 'home' %}" method="post" class="login">
@@ -14,5 +15,5 @@ Welcome to Sanguine.
       <button type="submit" class="btn submit">Login</button>
     </form>
 </section>
-
+{% endif %}
 {% endblock %}

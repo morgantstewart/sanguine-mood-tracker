@@ -26,5 +26,7 @@ urlpatterns = [
     path('moods/<int:mood_id>/', views.mood_detail, name='mood-detail'),
     path('moods/create/', views.MoodCreate.as_view(), name='mood-create'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/signup/', views.signup, name='signup'),
+
 
 ]
