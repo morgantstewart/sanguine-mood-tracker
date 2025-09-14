@@ -86,88 +86,74 @@
 
   .mood-option {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 15px;
-    background: white;
-    border: 2px solid #e9ecef;
+    border: 2px solid transparent;
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
+    font-weight: 600;
+    font-size: 1em;
+    min-height: 60px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
 
   .mood-option:hover {
-    border-color: #007bff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
   .mood-option.selected {
-    border-color: #007bff;
-    background-color: #e3f2fd;
-    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    border: 3px solid #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
   }
 
-  /* Mood-specific selection colors */
-  .mood-option[data-mood="depressed"].selected {
-    border-color: #6c757d;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+  /* Mood-specific colors - matching PNG icon colors */
+  .mood-option.mood-depressed {
+    background: #5B7C99;
+    color: white;
   }
 
-  .mood-option[data-mood="sad"].selected {
-    border-color: #17a2b8;
-    background-color: #e1f7fa;
-    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+  .mood-option.mood-sad {
+    background: #4169E1;
+    color: white;
   }
 
-  .mood-option[data-mood="okay"].selected {
-    border-color: #ffc107;
-    background-color: #fff8e1;
-    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  .mood-option.mood-okay {
+    background: #8FBC8F;
+    color: white;
   }
 
-  .mood-option[data-mood="good"].selected {
-    border-color: #28a745;
-    background-color: #e8f5e8;
-    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+  .mood-option.mood-good {
+    background: #20B2AA;
+    color: white;
   }
 
-  .mood-option[data-mood="happy"].selected {
-    border-color: #fd7e14;
-    background-color: #fff2e8;
-    box-shadow: 0 4px 12px rgba(253, 126, 20, 0.3);
+  .mood-option.mood-happy {
+    background: #CCFFCC;
+    color: #333;
   }
 
-  .mood-option[data-mood="ecstatic"].selected {
-    border-color: #dc3545;
-    background-color: #ffeaea;
-    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  .mood-option.mood-ecstatic {
+    background: #FFD700;
+    color: #333;
   }
 
-  .mood-option[data-mood="irritated"].selected {
-    border-color: #6f42c1;
-    background-color: #f3f0ff;
-    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+  .mood-option.mood-irritated {
+    background: #FFB6C1;
+    color: #333;
   }
 
-  .mood-option[data-mood="mad"].selected {
-    border-color: #343a40;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 12px rgba(52, 58, 64, 0.3);
-  }
-
-  .mood-option img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    margin-bottom: 8px;
+  .mood-option.mood-mad {
+    background: #FF6347;
+    color: white;
   }
 
   .mood-option span {
-    font-size: 0.9em;
-    color: #333;
-    font-weight: 500;
+    font-size: 1em;
+    font-weight: 600;
   }
   

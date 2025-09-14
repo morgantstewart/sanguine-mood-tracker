@@ -12,6 +12,7 @@
             <a href="{% url 'mood-calendar' %}?year={{ next_year }}&month={{ next_month }}" class="nav-btn">Next →</a>
         </div>
     </div>
+    
 
     <div class="calendar-grid">
         <div class="calendar-weekdays">
@@ -30,17 +31,12 @@
                     <div class="calendar-day {% if day == 0 %}empty-day{% endif %}">
                         {% if day != 0 %}
                             <div class="day-number">{{ day }}</div>
-                            {% with day_str=year|stringformat:"d"|add:"-"|add:month|stringformat:"02d"|add:"-"|add:day|stringformat:"02d" %}
-                                {% if day_str in moods_by_date %}
-                                    <div class="moods-for-day">
-                                        {% for mood in moods_by_date|lookup:day_str %}
-                                            <div class="mood-indicator mood-{{ mood.mood_type }}" title="{{ mood.name }}: {{ mood.description }}">
-                                                <a href="{% url 'mood-detail' mood.id %}">{{ mood.get_mood_type_display|truncatechars:8 }}</a>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            {% endwith %}
+                            {% format_date_string year month day as day_str %}
+                            {% for mood in moods_by_date|lookup:day_str %}
+                                <div class="mood-indicator mood-{{ mood.mood_type }}" title="{{ mood.name }}: {{ mood.description }}">
+                                    <a href="{% url 'mood-detail' mood.id %}">{{ mood.get_mood_type_display }}</a>
+                                </div>
+                            {% endfor %}
                         {% endif %}
                     </div>
                 {% endfor %}
@@ -168,75 +164,82 @@
 }
 
 .mood-indicator {
-    background: #e3f2fd;
-    border: 1px solid #2196f3;
-    border-radius: 3px;
-    padding: 2px 4px;
-    font-size: 0.8em;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin: 1px 0;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mood-indicator:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .mood-indicator a {
-    color: #1976d2;
     text-decoration: none;
+    display: block;
+    width: 100%;
 }
 
-.mood-indicator a:hover {
-    text-decoration: underline;
-}
-
-/* Mood-specific colors - matching form selection colors */
-.mood-depressed {
-    background: #6c757d !important;
-    border-color: #6c757d !important;
-}
-
-.mood-sad {
-    background: #17a2b8 !important;
-    border-color: #17a2b8 !important;
-}
-
-.mood-okay {
-    background: #ffc107 !important;
-    border-color: #ffc107 !important;
-}
-
-.mood-good {
-    background: #28a745 !important;
-    border-color: #28a745 !important;
-}
-
-.mood-happy {
-    background: #fd7e14 !important;
-    border-color: #fd7e14 !important;
-}
-
-.mood-ecstatic {
-    background: #dc3545 !important;
-    border-color: #dc3545 !important;
-}
-
-.mood-irritated {
-    background: #6f42c1 !important;
-    border-color: #6f42c1 !important;
-}
-
-.mood-mad {
-    background: #343a40 !important;
-    border-color: #343a40 !important;
-}
-
-.mood-indicator.mood-depressed a,
-.mood-indicator.mood-sad a,
-.mood-indicator.mood-mad a {
+/* Mood-specific colors - matching PNG icon colors */
+.mood-indicator.mood-depressed {
+    background: #5B7C99 !important;
+    border: 2px solid #5B7C99 !important;
     color: white !important;
 }
 
-.mood-indicator.mood-okay a,
-.mood-indicator.mood-good a,
-.mood-indicator.mood-happy a,
-.mood-indicator.mood-ecstatic a,
-.mood-indicator.mood-irritated a {
+.mood-indicator.mood-sad {
+    background: #4169E1 !important;
+    border: 2px solid #4169E1 !important;
     color: white !important;
+}
+
+.mood-indicator.mood-okay {
+    background: #8FBC8F !important;
+    border: 2px solid #8FBC8F !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-good {
+    background: #20B2AA !important;
+    border: 2px solid #20B2AA !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-happy {
+    background: #CCFFCC !important;
+    border: 2px solid #CCFFCC !important;
+    color: #333 !important;
+}
+
+.mood-indicator.mood-ecstatic {
+    background: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    color: #333 !important;
+}
+
+.mood-indicator.mood-irritated {
+    background: #FFB6C1 !important;
+    border: 2px solid #FFB6C1 !important;
+    color: #333 !important;
+}
+
+.mood-indicator.mood-mad {
+    background: #FF6347 !important;
+    border: 2px solid #FF6347 !important;
+    color: white !important;
+}
+
+.mood-indicator a {
+    color: inherit !important;
 }
 
 /* Mood Legend Styles */
@@ -275,15 +278,15 @@
     border: 1px solid #ccc;
 }
 
-/* Legend color matching */
-.mood-color.mood-depressed { background: #6c757d; }
-.mood-color.mood-sad { background: #17a2b8; }
-.mood-color.mood-okay { background: #ffc107; }
-.mood-color.mood-good { background: #28a745; }
-.mood-color.mood-happy { background: #fd7e14; }
-.mood-color.mood-ecstatic { background: #dc3545; }
-.mood-color.mood-irritated { background: #6f42c1; }
-.mood-color.mood-mad { background: #343a40; }
+/* Legend color matching - PNG icon colors */
+.mood-color.mood-depressed { background: #5B7C99; }
+.mood-color.mood-sad { background: #4169E1; }
+.mood-color.mood-okay { background: #8FBC8F; }
+.mood-color.mood-good { background: #20B2AA; }
+.mood-color.mood-happy { background: #CCFFCC; }
+.mood-color.mood-ecstatic { background: #FFD700; }
+.mood-color.mood-irritated { background: #FFB6C1; }
+.mood-color.mood-mad { background: #FF6347; }
 
 .calendar-actions {
     display: flex;

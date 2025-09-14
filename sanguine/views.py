@@ -75,11 +75,6 @@ def mood_calendar(request):
         date__lt=end_date
     ).order_by('date')
     
-    # Debug: Print mood data
-    print(f"DEBUG: Found {moods.count()} moods for user {request.user}")
-    for mood in moods:
-        print(f"DEBUG: Mood - {mood.mood_type} on {mood.date}")
-    
     # Create a dictionary of moods by date
     moods_by_date = {}
     for mood in moods:
@@ -87,8 +82,6 @@ def mood_calendar(request):
         if date_key not in moods_by_date:
             moods_by_date[date_key] = []
         moods_by_date[date_key].append(mood)
-    
-    print(f"DEBUG: moods_by_date = {moods_by_date}")
     
     # Generate calendar data
     cal = calendar.monthcalendar(year, month)
