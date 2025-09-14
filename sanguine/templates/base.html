@@ -25,6 +25,7 @@
       <ul>
         {% if user.is_authenticated %}
           <li><a href="{% url 'moods-index' %}">All Moods</a></li>
+          <li><a href="{% url 'mood-calendar' %}">Calendar</a></li>
           <li><a href="{% url 'mood-create' %}">Log New Mood</a></li>
           <li><a href="{% url 'about' %}">About</a></li>
           <li>

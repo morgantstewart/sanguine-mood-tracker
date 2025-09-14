@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load calendar_extras %}
+
+{% block content %}
+<div class="calendar-container">
+    <div class="calendar-header">
+        <h1>Mood Calendar</h1>
+        <div class="calendar-navigation">
+            <a href="{% url 'mood-calendar' %}?year={{ prev_year }}&month={{ prev_month }}" class="nav-btn">← Previous</a>
+            <span class="month-year">{{ month_name }} {{ year }}</span>
+            <a href="{% url 'mood-calendar' %}?year={{ next_year }}&month={{ next_month }}" class="nav-btn">Next →</a>
+        </div>
+    </div>
+
+    <div class="calendar-grid">
+        <div class="calendar-weekdays">
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+            <div class="weekday">Sun</div>
+        </div>
+
+        {% for week in calendar %}
+            <div class="calendar-week">
+                {% for day in week %}
+                    <div class="calendar-day {% if day == 0 %}empty-day{% endif %}">
+                        {% if day != 0 %}
+                            <div class="day-number">{{ day }}</div>
+                            {% with day_str=year|stringformat:"d"|add:"-"|add:month|stringformat:"02d"|add:"-"|add:day|stringformat:"02d" %}
+                                {% if day_str in moods_by_date %}
+                                    <div class="moods-for-day">
+                                        {% for mood in moods_by_date|lookup:day_str %}
+                                            <div class="mood-indicator" title="{{ mood.name }}: {{ mood.description }}">
+                                                <a href="{% url 'mood-detail' mood.id %}">{{ mood.name|truncatechars:8 }}</a>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="calendar-actions">
+        <a href="{% url 'mood-create' %}">Log New Mood</a>
+        <a href="{% url 'moods-index' %}">All Moods</a>
+    </div>
+</div>
+
+<style>
+.calendar-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.calendar-header h1 {
+    color: #333;
+    margin: 0;
+}
+
+.calendar-navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: #0056b3;
+}
+
+.month-year {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.calendar-grid {
+    margin-bottom: 30px;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    margin-bottom: 5px;
+}
+
+.weekday {
+    background: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #666;
+}
+
+.calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    margin-bottom: 1px;
+}
+
+.calendar-day {
+    min-height: 100px;
+    background: white;
+    border: 1px solid #e9ecef;
+    padding: 8px;
+    position: relative;
+}
+
+.empty-day {
+    background: #f8f9fa;
+}
+
+.day-number {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.moods-for-day {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mood-indicator {
+    background: #e3f2fd;
+    border: 1px solid #2196f3;
+    border-radius: 3px;
+    padding: 2px 4px;
+    font-size: 0.8em;
+}
+
+.mood-indicator a {
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.mood-indicator a:hover {
+    text-decoration: underline;
+}
+
+.calendar-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+</style>
+{% endblock %}

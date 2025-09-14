@@ -24,10 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.about, name='about'),
     path('moods/', views.moods_index, name='moods-index'),
+    path('moods/calendar/', views.mood_calendar, name='mood-calendar'),
     path('moods/<int:mood_id>/', views.mood_detail, name='mood-detail'),
     path('moods/create/', views.MoodCreate.as_view(), name='mood-create'),
     path('register/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
-
-
 ]
