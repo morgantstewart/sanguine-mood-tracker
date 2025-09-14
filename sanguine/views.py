@@ -75,6 +75,11 @@ def mood_calendar(request):
         date__lt=end_date
     ).order_by('date')
     
+    # Debug: Print mood data
+    print(f"DEBUG: Found {moods.count()} moods for user {request.user}")
+    for mood in moods:
+        print(f"DEBUG: Mood - {mood.mood_type} on {mood.date}")
+    
     # Create a dictionary of moods by date
     moods_by_date = {}
     for mood in moods:
@@ -82,6 +87,8 @@ def mood_calendar(request):
         if date_key not in moods_by_date:
             moods_by_date[date_key] = []
         moods_by_date[date_key].append(mood)
+    
+    print(f"DEBUG: moods_by_date = {moods_by_date}")
     
     # Generate calendar data
     cal = calendar.monthcalendar(year, month)
@@ -127,9 +134,9 @@ def mood_detail(request, mood_id):
 
 class MoodCreate(LoginRequiredMixin, CreateView):
     model = Mood
-    fields = ['name', 'breed', 'description', 'age', 'date', 'mood_type']
+    fields = ['description', 'date', 'mood_type']
     template_name = 'sanguine/mood_form.html'
-    success_url = '/moods/'
+    success_url = '/moods/calendar/'
 
     def get_initial(self):
         """Set today's date as the default date for new moods"""
@@ -144,9 +151,9 @@ class MoodCreate(LoginRequiredMixin, CreateView):
 
 class MoodUpdate(LoginRequiredMixin, UpdateView):
     model = Mood
-    fields = ['name', 'breed', 'description', 'age', 'date', 'mood_type']
+    fields = ['description', 'date', 'mood_type']
     template_name = 'sanguine/mood_form.html'
-    success_url = '/moods/'
+    success_url = '/moods/calendar/'
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -155,7 +162,7 @@ class MoodUpdate(LoginRequiredMixin, UpdateView):
 
 class MoodDelete(LoginRequiredMixin, DeleteView):
     model = Mood
-    success_url = '/moods/'
+    success_url = '/moods/calendar/'
 
 
 class Home(LoginView):

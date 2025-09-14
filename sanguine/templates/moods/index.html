@@ -1,60 +1,46 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
-<link rel="stylesheet" href="{% static 'css/moods/mood-index.css' %}" />
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/moods/mood-index.css' %}" />
+{% endblock %}
+
+{% block content %}
 <section class="page-header">
-    <h1></h1>
+    <h1>All My Moods</h1>
+    <a href="{% url 'mood-create' %}" class="btn btn-primary">Log New Mood</a>
 </section>
-<section class="card-container">
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/depressed1.png' %}" alt="Depressed Mood" />
+
+<section class="moods-list">
+    {% if moods %}
+        {% for mood in moods %}
+        <div class="mood-card">
+            <div class="mood-header">
+                <div class="mood-image">
+                    <img src="{% static 'css/images/'|add:mood.mood_type|add:'1.png' %}" alt="{{ mood.get_mood_type_display }}" />
+                </div>
+                <div class="mood-info">
+                    <h3>{{ mood.name }}</h3>
+                    <p class="mood-type">{{ mood.get_mood_type_display }}</p>
+                    <p class="mood-date">{{ mood.date }}</p>
+                </div>
+            </div>
+            <div class="mood-description">
+                <p>{{ mood.description }}</p>
+            </div>
+            <div class="mood-actions">
+                <a href="{% url 'mood-detail' mood.id %}" class="btn btn-sm">View</a>
+                <a href="{% url 'mood-update' mood.id %}" class="btn btn-sm">Edit</a>
+                <a href="{% url 'mood-delete' mood.id %}" class="btn btn-sm btn-danger">Delete</a>
             </div>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/sad1.png' %}" alt="Sad Mood" />
-            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-moods">
+            <h2>No moods logged yet</h2>
+            <p>Start tracking your moods by <a href="{% url 'mood-create' %}">logging your first mood</a>!</p>
         </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/okay1.png' %}" alt="Okay Mood" />
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/good1.png' %}" alt="Good Mood" />
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/happy1.png' %}" alt="Happy Mood" />
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/mad1.png' %}" alt="Mad Mood" />
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-content">
-            <div class="card-img-container">
-                <img src="{% static 'css/images/irritated1.png' %}" alt="Irritated Mood" />
-            </div>
-        </div>
-    </div>
+    {% endif %}
 </section>
 {% endblock %}
 

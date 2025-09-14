@@ -109,6 +109,55 @@
     box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
   }
 
+  /* Mood-specific selection colors */
+  .mood-option[data-mood="depressed"].selected {
+    border-color: #6c757d;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+  }
+
+  .mood-option[data-mood="sad"].selected {
+    border-color: #17a2b8;
+    background-color: #e1f7fa;
+    box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+  }
+
+  .mood-option[data-mood="okay"].selected {
+    border-color: #ffc107;
+    background-color: #fff8e1;
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  }
+
+  .mood-option[data-mood="good"].selected {
+    border-color: #28a745;
+    background-color: #e8f5e8;
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+  }
+
+  .mood-option[data-mood="happy"].selected {
+    border-color: #fd7e14;
+    background-color: #fff2e8;
+    box-shadow: 0 4px 12px rgba(253, 126, 20, 0.3);
+  }
+
+  .mood-option[data-mood="ecstatic"].selected {
+    border-color: #dc3545;
+    background-color: #ffeaea;
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  }
+
+  .mood-option[data-mood="irritated"].selected {
+    border-color: #6f42c1;
+    background-color: #f3f0ff;
+    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+  }
+
+  .mood-option[data-mood="mad"].selected {
+    border-color: #343a40;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 12px rgba(52, 58, 64, 0.3);
+  }
+
   .mood-option img {
     width: 60px;
     height: 60px;

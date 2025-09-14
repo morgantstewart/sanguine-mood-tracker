@@ -34,8 +34,8 @@
                                 {% if day_str in moods_by_date %}
                                     <div class="moods-for-day">
                                         {% for mood in moods_by_date|lookup:day_str %}
-                                            <div class="mood-indicator" title="{{ mood.name }}: {{ mood.description }}">
-                                                <a href="{% url 'mood-detail' mood.id %}">{{ mood.name|truncatechars:8 }}</a>
+                                            <div class="mood-indicator mood-{{ mood.mood_type }}" title="{{ mood.name }}: {{ mood.description }}">
+                                                <a href="{% url 'mood-detail' mood.id %}">{{ mood.get_mood_type_display|truncatechars:8 }}</a>
                                             </div>
                                         {% endfor %}
                                     </div>
@@ -46,6 +46,20 @@
                 {% endfor %}
             </div>
         {% endfor %}
+    </div>
+
+    <div class="mood-legend">
+        <h3>Mood Legend</h3>
+        <div class="legend-items">
+            <div class="legend-item"><span class="mood-color mood-depressed"></span> Depressed</div>
+            <div class="legend-item"><span class="mood-color mood-sad"></span> Sad</div>
+            <div class="legend-item"><span class="mood-color mood-okay"></span> Okay</div>
+            <div class="legend-item"><span class="mood-color mood-good"></span> Good</div>
+            <div class="legend-item"><span class="mood-color mood-happy"></span> Happy</div>
+            <div class="legend-item"><span class="mood-color mood-ecstatic"></span> Ecstatic</div>
+            <div class="legend-item"><span class="mood-color mood-irritated"></span> Irritated</div>
+            <div class="legend-item"><span class="mood-color mood-mad"></span> Mad</div>
+        </div>
     </div>
 
     <div class="calendar-actions">
@@ -169,6 +183,107 @@
 .mood-indicator a:hover {
     text-decoration: underline;
 }
+
+/* Mood-specific colors - matching form selection colors */
+.mood-depressed {
+    background: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+.mood-sad {
+    background: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}
+
+.mood-okay {
+    background: #ffc107 !important;
+    border-color: #ffc107 !important;
+}
+
+.mood-good {
+    background: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.mood-happy {
+    background: #fd7e14 !important;
+    border-color: #fd7e14 !important;
+}
+
+.mood-ecstatic {
+    background: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+
+.mood-irritated {
+    background: #6f42c1 !important;
+    border-color: #6f42c1 !important;
+}
+
+.mood-mad {
+    background: #343a40 !important;
+    border-color: #343a40 !important;
+}
+
+.mood-indicator.mood-depressed a,
+.mood-indicator.mood-sad a,
+.mood-indicator.mood-mad a {
+    color: white !important;
+}
+
+.mood-indicator.mood-okay a,
+.mood-indicator.mood-good a,
+.mood-indicator.mood-happy a,
+.mood-indicator.mood-ecstatic a,
+.mood-indicator.mood-irritated a {
+    color: white !important;
+}
+
+/* Mood Legend Styles */
+.mood-legend {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+}
+
+.mood-legend h3 {
+    margin: 0 0 15px 0;
+    color: #333;
+    text-align: center;
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.mood-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Legend color matching */
+.mood-color.mood-depressed { background: #6c757d; }
+.mood-color.mood-sad { background: #17a2b8; }
+.mood-color.mood-okay { background: #ffc107; }
+.mood-color.mood-good { background: #28a745; }
+.mood-color.mood-happy { background: #fd7e14; }
+.mood-color.mood-ecstatic { background: #dc3545; }
+.mood-color.mood-irritated { background: #6f42c1; }
+.mood-color.mood-mad { background: #343a40; }
 
 .calendar-actions {
     display: flex;

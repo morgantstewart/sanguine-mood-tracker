@@ -1,39 +1,17 @@
 {% extends 'base.html' %} 
 {% load static %} 
-{% block head %}
 
 {% block head %}
-<!-- New MCDatepicker CSS -->
-<link 
-  href="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.css" 
-  rel="stylesheet" 
-/>
-<link rel="stylesheet" href="{% static 'css/mcdp.css' %}">
-<!-- MCDatepicker JS -->
-<script 
-  src="https://cdn.jsdelivr.net/npm/mc-datepicker/dist/mc-calendar.min.js"
->
-</script>
-<!-- Existing CSS -->
-<link rel="stylesheet" href="{% static 'css/moods/mood-detail.css' %}" />
-{% endblock %}
-
-
-
 <link rel="stylesheet" href="{% static 'css/moods/mood-detail.css' %}" />
 {% endblock %} 
 {% block content %}
 <section class="mood-container">
   <div class="mood-img">
-    <img src="{% static 'images/sk8r-boi-mood.svg' %}" alt="A skater boy mood" />
+    <img src="{% static 'css/images/'|add:mood.mood_type|add:'1.png' %}" alt="{{ mood.get_mood_type_display }}" />
   </div>
   <div class="mood-details">
     <h1>{{ mood.name }}</h1>
-    {% if mood.age > 0 %}
-      <h2>A {{ mood.age }} year old {{ mood.breed }}</h2>
-    {% else %}
-      <h2>A {{ mood.breed }} kitten.</h2>
-    {% endif %}
+    <h2>{{ mood.get_mood_type_display }} - {{ mood.date }}</h2>
     <p>{{ mood.description }}</p>
 
     <div class="mood-actions">

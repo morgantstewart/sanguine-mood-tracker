@@ -1,39 +1,131 @@
-.card-container {
-    padding: 0 30px;
+.page-header {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .card {
-    width: 275px;
-    margin: 10px;
-    border: var(--borders);
-    box-shadow: var(--card-box-shadow);
-  }
-  
-  .card-content {
-    padding: 10px;
-    width: 100%;
-  }
-  
-  .usr-img {
-    width: 100%;
-    border-radius: var(--card-border-radius);
-  }
-  
-  .card > a {
-    text-decoration: none;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.page-header h1 {
+    margin: 0;
     color: var(--text-color);
-  }
-  
-  .card h2 {
-    margin: 10px 0;
+}
+
+.moods-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.mood-card {
+    border: var(--borders);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-box-shadow);
+    padding: 20px;
+    background: white;
+}
+
+.mood-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.mood-image {
+    margin-right: 15px;
+}
+
+.mood-image img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.mood-info h3 {
+    margin: 0 0 5px 0;
     font-size: var(--font-xl);
-  }
-  
-  .card p {
-    margin: 5px 0;
+    color: var(--text-color);
+}
+
+.mood-type {
+    font-weight: bold;
+    color: #007bff;
+    margin: 0 0 5px 0;
+}
+
+.mood-date {
+    color: #666;
+    font-size: var(--font-sm);
+    margin: 0;
+}
+
+.mood-description {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.mood-description p {
+    margin: 0;
     font-size: var(--font-reg);
-  }
+}
+
+.mood-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: var(--font-sm);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+}
+
+.no-moods {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-color);
+}
+
+.no-moods h2 {
+    margin-bottom: 10px;
+}
+
+.no-moods a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.no-moods a:hover {
+    text-decoration: underline;
+}
   
