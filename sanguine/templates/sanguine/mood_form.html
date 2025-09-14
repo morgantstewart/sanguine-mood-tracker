@@ -7,11 +7,9 @@
 
 <div class="page-header">
     <div class="page-header">
-        <!-- Check if a cat object exists to determine if we're editing -->
         {% if mood %}
           <h1>Edit {{ mood.name }}</h1>
         {% else %}
-          <h1>Add a Mood</h1>
         {% endif %}
       </div>
 
@@ -21,10 +19,97 @@
 
 <form action="" method="post" class="form-container">
   {% csrf_token %}
+  
+  <!-- Mood Selection -->
+  <div class="mood-selection">
+    <h3>How are you feeling?</h3>
+    <div class="mood-grid">
+      <div class="mood-option" data-mood="happy">
+        <img src="{% static 'css/images/happy1.png' %}" alt="Happy" />
+        <span>Happy</span>
+        <input type="radio" name="mood_type" value="happy" id="mood_happy" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="sad">
+        <img src="{% static 'css/images/sad1.png' %}" alt="Sad" />
+        <span>Sad</span>
+        <input type="radio" name="mood_type" value="sad" id="mood_sad" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="depressed">
+        <img src="{% static 'css/images/depressed1.png' %}" alt="Depressed" />
+        <span>Depressed</span>
+        <input type="radio" name="mood_type" value="depressed" id="mood_depressed" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="good">
+        <img src="{% static 'css/images/good1.png' %}" alt="Good" />
+        <span>Good</span>
+        <input type="radio" name="mood_type" value="good" id="mood_good" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="okay">
+        <img src="{% static 'css/images/okay1.png' %}" alt="Okay" />
+        <span>Okay</span>
+        <input type="radio" name="mood_type" value="okay" id="mood_okay" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="irritated">
+        <img src="{% static 'css/images/irritated1.png' %}" alt="Irritated" />
+        <span>Irritated</span>
+        <input type="radio" name="mood_type" value="irritated" id="mood_irritated" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="mad">
+        <img src="{% static 'css/images/mad1.png' %}" alt="Mad" />
+        <span>Mad</span>
+        <input type="radio" name="mood_type" value="mad" id="mood_mad" style="display: none;">
+      </div>
+      <div class="mood-option" data-mood="ecstatic">
+        <img src="{% static 'css/images/ecstatic1.png' %}" alt="Ecstatic" />
+        <span>Ecstatic</span>
+        <input type="radio" name="mood_type" value="ecstatic" id="mood_ecstatic" style="display: none;">
+      </div>
+    </div>
+  </div>
+
   <table>
-    {{ form.as_table }}
+    <tr>
+      <th>{{ form.description.label_tag }}</th>
+      <td>{{ form.description }}</td>
+    </tr>
+    <tr>
+      <th>{{ form.date.label_tag }}</th>
+      <td>
+        <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}" 
+               value="{% if form.date.value %}{{ form.date.value|date:'Y-m-d' }}{% else %}{{ form.date.field.initial|default:'' }}{% endif %}"
+               class="date-picker">
+      </td>
+    </tr>
   </table>
   <button type="submit" class="btn submit">Submit!</button>
 </form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const moodOptions = document.querySelectorAll('.mood-option');
+    
+    moodOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove selected class from all options
+            moodOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
+            // Check the corresponding radio button
+            const radioButton = this.querySelector('input[type="radio"]');
+            radioButton.checked = true;
+        });
+    });
+    
+    // Set default selection (happy)
+    const defaultOption = document.querySelector('[data-mood="happy"]');
+    if (defaultOption) {
+        defaultOption.classList.add('selected');
+        const defaultRadio = defaultOption.querySelector('input[type="radio"]');
+        defaultRadio.checked = true;
+    }
+});
+</script>
 
 {% endblock %}

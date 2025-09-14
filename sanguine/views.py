@@ -127,9 +127,15 @@ def mood_detail(request, mood_id):
 
 class MoodCreate(LoginRequiredMixin, CreateView):
     model = Mood
-    fields = ['name', 'breed', 'description', 'age', 'date']
+    fields = ['name', 'breed', 'description', 'age', 'date', 'mood_type']
     template_name = 'sanguine/mood_form.html'
     success_url = '/moods/'
+
+    def get_initial(self):
+        """Set today's date as the default date for new moods"""
+        initial = super().get_initial()
+        initial['date'] = timezone.now().date()
+        return initial
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -138,7 +144,7 @@ class MoodCreate(LoginRequiredMixin, CreateView):
 
 class MoodUpdate(LoginRequiredMixin, UpdateView):
     model = Mood
-    fields = ['name', 'breed', 'description', 'age', 'date']
+    fields = ['name', 'breed', 'description', 'age', 'date', 'mood_type']
     template_name = 'sanguine/mood_form.html'
     success_url = '/moods/'
 
