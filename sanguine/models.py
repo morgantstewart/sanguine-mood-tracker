@@ -23,6 +23,20 @@ class Mood(models.Model):
     date = models.DateField(default=timezone.now, help_text="Select the date for this mood")
     mood_type = models.CharField(max_length=20, choices=MOOD_CHOICES, default='happy', help_text="Select your current mood")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    def get_mood_text(self):
+        """Return emoji for each mood type"""
+        mood_texts = {
+            'depressed': '😔',
+            'sad': '😢',
+            'okay': '😐',
+            'good': '😊',
+            'happy': '😄',
+            'ecstatic': '🤩',
+            'irritated': '😤',
+            'mad': '😡',
+        }
+        return mood_texts.get(self.mood_type, '😐')
 
     def __str__(self):
         return self.name

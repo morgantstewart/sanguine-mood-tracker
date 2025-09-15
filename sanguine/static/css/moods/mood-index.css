@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    margin-top: 80px; /* Add space for sticky navbar */
     padding: 20px;
 }
 

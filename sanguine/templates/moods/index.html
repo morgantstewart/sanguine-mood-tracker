@@ -16,8 +16,10 @@
         {% for mood in moods %}
         <div class="mood-card">
             <div class="mood-header">
-                <div class="mood-image">
-                    <img src="{% static 'css/images/'|add:mood.mood_type|add:'1.png' %}" alt="{{ mood.get_mood_type_display }}" />
+                <div class="mood-text-display">
+                    <div class="mood-text-content">
+                        <p>{{ mood.get_mood_text }}</p>
+                    </div>
                 </div>
                 <div class="mood-info">
                     <h3>{{ mood.name }}</h3>

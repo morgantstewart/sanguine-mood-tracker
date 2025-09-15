@@ -1,4 +1,9 @@
-.form-container {
+/* Add space for sticky navbar */
+  .page-header {
+    margin-top: 80px;
+  }
+
+  .form-container {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -155,5 +160,34 @@
   .mood-option span {
     font-size: 1em;
     font-weight: 600;
+  }
+
+  /* Mood Text Display Styles */
+  .mood-text-display {
+    margin-right: 15px;
+    min-width: 180px;
+  }
+
+  .mood-text-content {
+    padding: 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .mood-text-content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  .mood-text-content p {
+    margin: 0;
+    font-size: 3em; /* Much bigger emoji */
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 1.4;
   }
   
