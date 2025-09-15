@@ -165,17 +165,21 @@
   /* Mood Text Display Styles */
   .mood-text-display {
     margin-right: 15px;
-    min-width: 180px;
+    min-width: 120px; /* Adjusted for bigger emoji */
   }
 
   .mood-text-content {
-    padding: 15px;
+    padding: 20px; /* More padding for bigger emoji */
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 12px;
     border: 2px solid #dee2e6;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 80px; /* Ensure consistent height for bigger emoji */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mood-text-content:hover {
