@@ -15,6 +15,20 @@ MOOD_CHOICES = [
     ('ecstatic', 'Ecstatic'),
     ('irritated', 'Irritated'),
     ('mad', 'Mad'),
+    ('anxious', 'Anxious'),
+    ('excited', 'Excited'),
+    ('tired', 'Tired'),
+    ('stressed', 'Stressed'),
+    ('calm', 'Calm'),
+    ('confused', 'Confused'),
+    ('grateful', 'Grateful'),
+    ('lonely', 'Lonely'),
+    ('content', 'Content'),
+    ('overwhelmed', 'Overwhelmed'),
+    ('peaceful', 'Peaceful'),
+    ('energetic', 'Energetic'),
+    ('bored', 'Bored'),
+    ('proud', 'Proud'),
 ]
 
 class Mood(models.Model):
@@ -35,6 +49,20 @@ class Mood(models.Model):
             'ecstatic': '🤩',
             'irritated': '😤',
             'mad': '😡',
+            'anxious': '😰',
+            'excited': '🤗',
+            'tired': '😴',
+            'stressed': '😫',
+            'calm': '😌',
+            'confused': '😕',
+            'grateful': '🥰',
+            'lonely': '😞',
+            'content': '😊',
+            'overwhelmed': '🤯',
+            'peaceful': '🕊️',
+            'energetic': '⚡',
+            'bored': '😑',
+            'proud': '😌',
         }
         return mood_texts.get(self.mood_type, '😐')
 

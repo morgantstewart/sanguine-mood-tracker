@@ -55,6 +55,20 @@
             <div class="legend-item"><span class="mood-color mood-ecstatic"></span> Ecstatic</div>
             <div class="legend-item"><span class="mood-color mood-irritated"></span> Irritated</div>
             <div class="legend-item"><span class="mood-color mood-mad"></span> Mad</div>
+            <div class="legend-item"><span class="mood-color mood-anxious"></span> Anxious</div>
+            <div class="legend-item"><span class="mood-color mood-excited"></span> Excited</div>
+            <div class="legend-item"><span class="mood-color mood-tired"></span> Tired</div>
+            <div class="legend-item"><span class="mood-color mood-stressed"></span> Stressed</div>
+            <div class="legend-item"><span class="mood-color mood-calm"></span> Calm</div>
+            <div class="legend-item"><span class="mood-color mood-confused"></span> Confused</div>
+            <div class="legend-item"><span class="mood-color mood-grateful"></span> Grateful</div>
+            <div class="legend-item"><span class="mood-color mood-lonely"></span> Lonely</div>
+            <div class="legend-item"><span class="mood-color mood-content"></span> Content</div>
+            <div class="legend-item"><span class="mood-color mood-overwhelmed"></span> Overwhelmed</div>
+            <div class="legend-item"><span class="mood-color mood-peaceful"></span> Peaceful</div>
+            <div class="legend-item"><span class="mood-color mood-energetic"></span> Energetic</div>
+            <div class="legend-item"><span class="mood-color mood-bored"></span> Bored</div>
+            <div class="legend-item"><span class="mood-color mood-proud"></span> Proud</div>
         </div>
     </div>
 
@@ -69,9 +83,10 @@
     max-width: 1200px;
     margin: 100px auto 20px auto; /* Add space for sticky navbar */
     padding: 20px;
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-color);
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
 .calendar-header {
@@ -80,11 +95,11 @@
     align-items: center;
     margin-bottom: 30px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid var(--border-color);
 }
 
 .calendar-header h1 {
-    color: #333;
+    color: var(--text-color);
     margin: 0;
 }
 
@@ -110,7 +125,7 @@
 .month-year {
     font-size: 1.2em;
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
 }
 
 .calendar-grid {
@@ -125,11 +140,12 @@
 }
 
 .weekday {
-    background: #f8f9fa;
+    background: var(--card-bg);
     padding: 10px;
     text-align: center;
     font-weight: bold;
-    color: #666;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
 }
 
 .calendar-week {
@@ -141,19 +157,20 @@
 
 .calendar-day {
     min-height: 100px;
-    background: white;
-    border: 1px solid #e9ecef;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
     padding: 8px;
     position: relative;
 }
 
 .empty-day {
-    background: #f8f9fa;
+    background: var(--card-bg);
 }
 
 .day-number {
     font-weight: bold;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 5px;
 }
 
@@ -217,24 +234,109 @@
 .mood-indicator.mood-happy {
     background: #CCFFCC !important;
     border: 2px solid #CCFFCC !important;
-    color: #333 !important;
+    color: white !important;
 }
 
 .mood-indicator.mood-ecstatic {
     background: #FFD700 !important;
     border: 2px solid #FFD700 !important;
-    color: #333 !important;
+    color: white !important;
 }
 
 .mood-indicator.mood-irritated {
     background: #FFB6C1 !important;
     border: 2px solid #FFB6C1 !important;
-    color: #333 !important;
+    color: white !important;
 }
 
 .mood-indicator.mood-mad {
     background: #FF6347 !important;
     border: 2px solid #FF6347 !important;
+    color: white !important;
+}
+
+/* New mood indicators */
+.mood-indicator.mood-anxious {
+    background: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-excited {
+    background: #FF69B4 !important;
+    border: 2px solid #FF69B4 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-tired {
+    background: #708090 !important;
+    border: 2px solid #708090 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-stressed {
+    background: #DC143C !important;
+    border: 2px solid #DC143C !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-calm {
+    background: #87CEEB !important;
+    border: 2px solid #87CEEB !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-confused {
+    background: #DDA0DD !important;
+    border: 2px solid #DDA0DD !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-grateful {
+    background: #FFA07A !important;
+    border: 2px solid #FFA07A !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-lonely {
+    background: #483D8B !important;
+    border: 2px solid #483D8B !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-content {
+    background: #98FB98 !important;
+    border: 2px solid #98FB98 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-overwhelmed {
+    background: #8B0000 !important;
+    border: 2px solid #8B0000 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-peaceful {
+    background: #E0E0E0 !important;
+    border: 2px solid #E0E0E0 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-energetic {
+    background: #FF4500 !important;
+    border: 2px solid #FF4500 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-bored {
+    background: #696969 !important;
+    border: 2px solid #696969 !important;
+    color: white !important;
+}
+
+.mood-indicator.mood-proud {
+    background: #DAA520 !important;
+    border: 2px solid #DAA520 !important;
     color: white !important;
 }
 
@@ -246,14 +348,15 @@
 .mood-legend {
     margin: 20px 0;
     padding: 20px;
-    background: #f8f9fa;
+    background: var(--input-bg);
+    color: var(--text-color);
     border-radius: 10px;
-    border: 1px solid #e9ecef;
+    border: 1px solid var(--border-color);
 }
 
 .mood-legend h3 {
     margin: 0 0 15px 0;
-    color: #333;
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -287,6 +390,20 @@
 .mood-color.mood-ecstatic { background: #FFD700; }
 .mood-color.mood-irritated { background: #FFB6C1; }
 .mood-color.mood-mad { background: #FF6347; }
+.mood-color.mood-anxious { background: #FFD700; }
+.mood-color.mood-excited { background: #FF69B4; }
+.mood-color.mood-tired { background: #708090; }
+.mood-color.mood-stressed { background: #DC143C; }
+.mood-color.mood-calm { background: #87CEEB; }
+.mood-color.mood-confused { background: #DDA0DD; }
+.mood-color.mood-grateful { background: #FFA07A; }
+.mood-color.mood-lonely { background: #483D8B; }
+.mood-color.mood-content { background: #98FB98; }
+.mood-color.mood-overwhelmed { background: #8B0000; }
+.mood-color.mood-peaceful { background: #E0E0E0; }
+.mood-color.mood-energetic { background: #FF4500; }
+.mood-color.mood-bored { background: #696969; }
+.mood-color.mood-proud { background: #DAA520; }
 
 .calendar-actions {
     display: flex;

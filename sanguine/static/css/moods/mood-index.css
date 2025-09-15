@@ -24,7 +24,8 @@
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-box-shadow);
     padding: 20px;
-    background: white;
+    background: var(--card-bg);
+    color: var(--text-color);
 }
 
 .mood-header {
@@ -56,7 +57,7 @@
 }
 
 .mood-date {
-    color: #666;
+    color: var(--secondary);
     font-size: var(--font-sm);
     margin: 0;
 }
@@ -64,8 +65,9 @@
 .mood-description {
     margin-bottom: 15px;
     padding: 10px;
-    background: #f8f9fa;
+    background: var(--input-bg);
     border-radius: 5px;
+    color: var(--text-color);
 }
 
 .mood-description p {
