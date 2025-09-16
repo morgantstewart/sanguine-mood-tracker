@@ -254,7 +254,7 @@
   }
 
   .mood-text-content {
-    padding: 20px; /* More padding for bigger emoji */
+    padding: 50px; /* More padding for bigger emoji */
     background: linear-gradient(135deg, var(--input-bg) 0%, var(--card-bg) 100%);
     border-radius: 12px;
     border: 2px solid var(--border-color);
@@ -274,7 +274,7 @@
 
   .mood-text-content p {
     margin: 0;
-    font-size: 3em; /* Much bigger emoji */
+    font-size: 4em; /* Much bigger emoji */
     color: var(--text-color);
     font-weight: 600;
     line-height: 1.4;

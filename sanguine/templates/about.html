@@ -1,8 +1,21 @@
 {% extends 'base.html' %} 
 {% block content %}
+{% load static %}
 <h1>About Sanguine</h1>
 <hr />
-<p class="page-content">
-About Sanguine here.
+<p class="page-content"><br>
+Sanguine is a mood tracking app that allows you to track your
+<br> moods and feelings over time.
+
+<br><br>
+<br> Mood monitoring can:
+<br>
+<br>- create space to feel your feelings
+<br>- help you recognize patterns and triggers
+<br>- help you communicate your feelings to others
+<br>- help you get the mental health support you need.
+<br><br><img src="{% static 'css/images/hdlarge.png' %}" alt="Sanguine Logo" />
+
+
 </p>
 {% endblock %}

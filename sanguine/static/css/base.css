@@ -32,7 +32,7 @@ html {
 /* resets font size to be 62.5% of the user preference - 
      in most browser configurations this will be 10px */
 :root {
-  font-size: 62.5%;
+  font-size: 63.5%;
 }
 
 body {
@@ -47,11 +47,11 @@ body {
   /* Dark mode color scheme */
   background: #111111;
   color: #e0e0e0;
-  --nav-bg: rgba(60, 60, 60, 0.9);
+  --nav-bg: rgba(25, 25, 25, 0.9);
   --nav-bg-ff: rgba(40, 40, 40, 0.95);
-  --borders: rgb(70, 130, 248) solid 2px;
+  --borders: rgb(184, 255, 223) solid 2px;
   --text-color: #e0e0e0;
-  --link-color: rgb(70, 248, 126);
+  --link-color: rgb(174, 255, 199);
   --link-hover-color: rgb(90, 255, 150);
   --button-bg: rgb(60, 60, 60);
   --button-bg-hover: rgb(80, 80, 80);
@@ -95,7 +95,7 @@ a:hover {
 .mood-legend h3,
 .calendar-header h1 {
   font-family: 'Borsok', 'Oswald', 'Bebas Neue', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
