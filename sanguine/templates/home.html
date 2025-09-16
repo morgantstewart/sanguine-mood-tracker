@@ -1,13 +1,16 @@
 {% extends 'base.html' %} 
 {% load static %}
 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
 {% block content %}
 <h1>Hello from Sanguine</h1>
-<hr />
-<p class="page-content">
-Welcome to Sanguine.
+<p class="page-content"><center>
+Welcome to your mood sanctuary. 
+<br><H3>A place to track your moods and feelings.</H3>
 <img src="{% static 'css/images/hdlarge.png' %}" alt="Sanguine Logo" />
-</p>
+</p></center>
 {% if not user.is_authenticated %}
 
 <section>

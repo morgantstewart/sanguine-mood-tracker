@@ -133,113 +133,113 @@
   /* Mood-specific colors - matching PNG icon colors */
   .mood-option.mood-depressed {
     background: #5B7C99;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-sad {
     background: #4169E1;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-okay {
     background: #8FBC8F;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-good {
     background: #20B2AA;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-happy {
     background: #CCFFCC;
-    color: var(--text-color);
+    color: black;
   }
 
   .mood-option.mood-ecstatic {
     background: #FFD700;
-    color: var(--text-color);
+    color: black;
   }
 
   .mood-option.mood-irritated {
     background: #FFB6C1;
-    color: var(--text-color);
+    color: black;
   }
 
   .mood-option.mood-mad {
     background: #FF6347;
-    color: white;
+    color: black;
   }
 
   /* New mood colors */
   .mood-option.mood-anxious {
     background: #FFD700;
-    color: var(--text-color);
+    color: black;
   }
 
   .mood-option.mood-excited {
     background: #FF69B4;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-tired {
     background: #708090;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-stressed {
     background: #DC143C;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-calm {
     background: #87CEEB;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-confused {
     background: #DDA0DD;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-grateful {
     background: #FFA07A;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-lonely {
     background: #483D8B;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-content {
     background: #98FB98;
-    color: var(--text-color);
+    color: black;
   }
 
   .mood-option.mood-overwhelmed {
     background: #8B0000;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-peaceful {
     background: #E0E0E0;
-    color: var(--text-color);
+    color: black;
   }
 
   .mood-option.mood-energetic {
     background: #FF4500;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-bored {
     background: #696969;
-    color: white;
+    color: black;
   }
 
   .mood-option.mood-proud {
     background: #DAA520;
-    color: white;
+    color: black;
   }
 
   .mood-option span {

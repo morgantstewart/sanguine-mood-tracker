@@ -52,7 +52,7 @@
 
 .mood-type {
     font-weight: bold;
-    color: #007bff;
+    color: var(--link-color);
     margin: 0 0 5px 0;
 }
 
@@ -124,11 +124,12 @@
 }
 
 .no-moods a {
-    color: #007bff;
+    color: var(--link-color);
     text-decoration: none;
 }
 
 .no-moods a:hover {
+    color: var(--link-hover-color);
     text-decoration: underline;
 }
   
