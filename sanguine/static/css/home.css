@@ -51,7 +51,7 @@ main {
   .welcome-text h1 {
     font-size: clamp(3.5rem, 8vw, 8rem);
     margin-bottom: 30px;
-    color: var(--text-color);
+    color: #B0CFA5;
     font-weight: 700;
     line-height: 1.1;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -123,11 +123,11 @@ main {
     }
   
     .login {
-      border: var(--borders);
+      border: 1px solid rgb(77, 77, 77);
       padding: 20px;
       border-radius: var(--card-border-radius);
       box-shadow: var(--card-box-shadow);
-      width: 100%;
+      width: 150%;
     }
   
     .logo-container {
