@@ -103,6 +103,12 @@ Sanguine tracks a comprehensive range of emotions including:
 - **Smooth animations** and hover effects
 - **Accessible color contrasts** for readability
 
+## Next Steps
+- Analytics dashboard to visualize mood data
+- Public/sharable mood logs
+- Download all mood data via CSV
+
+
 
 ## Attributions
 
@@ -116,5 +122,3 @@ Sanguine tracks a comprehensive range of emotions including:
 
 ### Research
 - https://www.calm.com/blog/mood-monitoring
-
----
