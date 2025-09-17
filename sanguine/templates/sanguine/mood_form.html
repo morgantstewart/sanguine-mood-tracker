@@ -6,21 +6,16 @@
 {% block content %}
 
 <div class="page-header">
-    <div class="page-header">
-        {% if mood %}
-          <h1>Edit {{ mood.name }}</h1>
-        {% else %}
-        {% endif %}
-      </div>
-
-  <h1>Add a Mood.</h1>
-  <!-- <img src="{% static 'images/' %}" alt="A mood" /> -->
+  {% if mood %}
+    <h1>Edit {{ mood.name }}</h1>
+  {% else %}
+    <h1>Add a Mood</h1>
+  {% endif %}
 </div>
 
 <form action="" method="post" class="form-container">
   {% csrf_token %}
   
-  <!-- Mood Selection -->
   <div class="mood-selection">
     <h3>How are you feeling?</h3>
     <div class="mood-grid">

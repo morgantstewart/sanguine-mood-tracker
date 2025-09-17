@@ -28,7 +28,6 @@ main {
     width: 80%;
   }
 
-  /* Homepage centering styles */
   .homepage-main {
     display: flex;
     justify-content: center;
