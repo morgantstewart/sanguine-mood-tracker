@@ -5,17 +5,15 @@
 {% endblock %} 
 {% block content %}
 <div class="page-header">
-  <h1>Sign Up</h1>
+  <h1>Start Using Sanguine</h1>
   <img src="{% static 'images/' %}" alt="" />
 </div>
 {% if error_message %}
   <p class="red-text">{{ error_message }}</p>
 {% endif %}
-<form action="" method="post" class="form-container" autocomplete="off">
+<form action="" method="post" class="login" autocomplete="off">
   {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
+  {{ form.as_p }}
   <button type="submit" class="btn submit">Submit!</button>
 </form>
 
